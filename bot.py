@@ -1,4 +1,4 @@
-import getpass
+import os
 
 
 def load_phonebook():
@@ -42,7 +42,7 @@ def input_error(func):
 @input_error
 def hello(name=None):
     if name is None:
-        name = getpass.getuser()
+        name = os.environ.get("USERNAME")
     return f"How can I help you, {name}?"
 
 
@@ -100,12 +100,31 @@ def show_all(phonebook):
 
 
 OPERATIONS = {
-    hello: ("hello"),
-    add_contact: ("+", "плюс", "додай", "add"),
-    del_contact: ("del", "delete", "remove", "видалити"),
-    change_phone: ("change", "змінити"),
-    get_phone: ("phone", "номер"),
-    show_all: ("show all", "все"),
+    hello: ("hello",),
+    add_contact: (
+        "+",
+        "плюс",
+        "додай",
+        "add",
+    ),
+    del_contact: (
+        "del",
+        "delete",
+        "remove",
+        "видалити",
+    ),
+    change_phone: (
+        "change",
+        "змінити",
+    ),
+    get_phone: (
+        "phone",
+        "номер",
+    ),
+    show_all: (
+        "show all",
+        "все",
+    ),
 }
 
 
